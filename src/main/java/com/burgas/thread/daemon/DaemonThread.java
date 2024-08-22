@@ -12,7 +12,7 @@ public class DaemonThread {
     private static final String MESSAGE_TEMPLATE_THREAD_NAME_AND_DAEMON_STATUS = "%s : %b\n";
     private static final int MAIN_THREAD_SECONDS_SLEEP = 10;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] ignoredArgs) throws InterruptedException {
 
         printThreadNameAndDaemonStatus(currentThread());
 

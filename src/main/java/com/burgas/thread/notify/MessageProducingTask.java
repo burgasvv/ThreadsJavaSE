@@ -17,6 +17,7 @@ public class MessageProducingTask implements Runnable {
         messageFactory = new MessageFactory();
     }
 
+    @SuppressWarnings("unused")
     public MessageBroker getMessageBroker() {
         return messageBroker;
     }
@@ -34,7 +35,6 @@ public class MessageProducingTask implements Runnable {
             }
 
         } catch (InterruptedException e) {
-
             currentThread().interrupt();
         }
     }
@@ -50,12 +50,12 @@ public class MessageProducingTask implements Runnable {
             nextMessageIndex = INITIAL_NEXT_MESSAGE_INDEX;
         }
 
+        @SuppressWarnings("unused")
         public int getNextMessageIndex() {
             return nextMessageIndex;
         }
 
         public Message create() {
-
             return new Message(format(TEMPLATE_CREATED_MESSAGE_INDEX, nextMessageIndex++));
         }
     }

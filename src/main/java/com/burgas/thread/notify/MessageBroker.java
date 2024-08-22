@@ -15,10 +15,12 @@ public class MessageBroker {
         messagesToBeConsumed = new ArrayDeque<>(maxStoredMessages);
     }
 
+    @SuppressWarnings("unused")
     public Queue<Message> getMessagesToBeConsumed() {
         return messagesToBeConsumed;
     }
 
+    @SuppressWarnings("unused")
     public int getMaxStoredMessages() {
         return maxStoredMessages;
     }

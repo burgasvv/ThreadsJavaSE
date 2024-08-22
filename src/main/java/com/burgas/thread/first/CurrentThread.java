@@ -9,7 +9,7 @@ public class CurrentThread {
 
     private final static int CREATED_THREADS_AMOUNT = 5;
 
-    public static void main(String[] args) {
+    public static void main(String[] ignoredArgs) {
 
         out.println(currentThread().getName());
 

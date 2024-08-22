@@ -21,10 +21,10 @@ public final class Runner {
     /**
      * The entry point of application.
      *
-     * @param args the input arguments
+     * @param ignoredArgs the input arguments
      * @throws InterruptedException the interrupted exception
      */
-    public static void main(String[] args)
+    public static void main(String[] ignoredArgs)
             throws InterruptedException {
         testCounter(CounterGuardedByLock::new);
         testCounter(CounterGuardedByReadWriteLock::new);
@@ -53,6 +53,7 @@ public final class Runner {
         waitUntilFinish(readingValueThreads);
 
         final Long totalAmountOfReads = findTotalAmountOfReads(readingValueTasks);
+        //noinspection preview
         out.println(STR."Amount of readings value: \{totalAmountOfReads}");
     }
 
@@ -68,6 +69,7 @@ public final class Runner {
 
     private static void incrementCounter(final AbstractCounter counter){
         try {
+            //noinspection unused
             @NotNull OptionalLong along = counter.increment();
             SECONDS.sleep(1);
         } catch (final InterruptedException interruptedException) {
@@ -146,6 +148,7 @@ public final class Runner {
         @Override
         public void run() {
             while (!currentThread().isInterrupted()){
+                //noinspection unused
                 OptionalLong aLong = this.counter.getValue();
                 this.amountOfReads++;
             }

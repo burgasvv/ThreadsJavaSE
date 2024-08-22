@@ -7,7 +7,7 @@ public class ThreadState {
 
     private static final String MESSAGE_TEMPLATE_THREAD_STATE = "%s : %s\n";
 
-    public static void main(String[] args) {
+    public static void main(String[] ignoredArgs) {
 
         final Thread mainThread = currentThread();
         getThreadState(mainThread);

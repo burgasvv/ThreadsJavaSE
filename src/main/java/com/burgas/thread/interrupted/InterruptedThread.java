@@ -15,7 +15,7 @@ public class InterruptedThread {
     private static final String MESSAGE_THREAD_WAS_INTERRUPTED = "Thread was interrupted";
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] ignoredArgs) throws InterruptedException {
 
         final Thread communicatingThread = getCommunicatingThread();
         communicatingThread.start();

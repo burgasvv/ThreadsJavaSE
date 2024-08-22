@@ -15,7 +15,7 @@ public class TwoThreadsSummary {
     private static final String TEMPLATE_MESSAGE_THREAD_NAME_AND_NUMBER = "%s : %d\n";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] ignoredArgs) {
 
         TaskSummingNumber taskSummingNumberFirst = new TaskSummingNumber(
                 FROM_NUMBER_FIRST_THREAD, TO_NUMBER_FIRST_THREAD
@@ -38,6 +38,7 @@ public class TwoThreadsSummary {
         printThreadNameAndNumber(resultSumTwoTasks);
     }
 
+    @SuppressWarnings("unused")
     private static TaskSummingNumber startSubTask(final int fromNumber, final int toNumber) {
 
         TaskSummingNumber subTask = new TaskSummingNumber(fromNumber, toNumber);
@@ -64,6 +65,7 @@ public class TwoThreadsSummary {
         }
     }
 
+    @SuppressWarnings("unused")
     private static void sleepThread() {
         try {
             Thread.sleep(THREAD_SLEEP_TIME_MILLIS);

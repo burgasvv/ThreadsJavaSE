@@ -14,6 +14,7 @@ public record Message(String data) {
 
     @Override
     public String toString() {
+        //noinspection preview
         return STR."Message{message='\{data}\{'\''}\{'}'}";
     }
 }

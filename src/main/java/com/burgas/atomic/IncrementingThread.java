@@ -19,7 +19,7 @@ public class IncrementingThread {
     private static final Object LOCK_TO_INCREMENT_SECOND_COUNTER = new Object();
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] ignoredArgs) throws InterruptedException {
 
         final Counter counter1 = new Counter();
         final Counter counter2 = new Counter();
