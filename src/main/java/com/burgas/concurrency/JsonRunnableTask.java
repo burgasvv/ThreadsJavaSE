@@ -2,8 +2,9 @@ package com.burgas.concurrency;
 
 import org.intellij.lang.annotations.Language;
 
-import static java.lang.System.*;
-import static java.lang.Thread.*;
+import static java.lang.System.out;
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
 
 public class JsonRunnableTask implements Runnable {
 
