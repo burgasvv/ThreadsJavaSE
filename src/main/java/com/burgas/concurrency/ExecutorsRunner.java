@@ -1,5 +1,6 @@
 package com.burgas.concurrency;
 
+import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,7 +14,7 @@ public class ExecutorsRunner {
 
     private static int count = 0;
 
-    public static void main(String[] ignoredArgs) {
+    public static void main(String[] ignoredArgs) throws IOException {
 
         Callable<Object> callable = Executors.callable(
                 new JsonRunnableTask()
@@ -23,6 +24,7 @@ public class ExecutorsRunner {
                 ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
                 ExecutorService cachedThreadPool = Executors.newCachedThreadPool()
         ) {
+
             Future<Object> jsonSubmit = fixedThreadPool.submit(callable);
             Future<?> messageSubmit = fixedThreadPool.submit(
                     () -> {
