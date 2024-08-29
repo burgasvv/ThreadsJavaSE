@@ -23,35 +23,39 @@ public class ReadWritePoolTest {
             throws ExecutionException, InterruptedException, IOException, AttachNotSupportedException {
 
         executorService.submit(
-                () -> {
-                    threadLocal.set(
-                            new ArrayList<>(
-                                    List.of("Slava", "Boris", "Danil", "Ruslan", "Kiril", "Nikita")
-                            )
-                    );
+                Executors.callable(
+                        () -> {
+                            threadLocal.set(
+                                    new ArrayList<>(
+                                            List.of("Slava", "Boris", "Danil", "Ruslan", "Kiril", "Nikita")
+                                    )
+                            );
 
-                    threadLocal.get().forEach(
-                            s -> {
-                                list.add(s);
-                                out.println(
-                                        STR."\{Thread.currentThread().getName()} :: add/write : \{s}"
-                                );
-                                counter.getAndIncrement();
-                            }
-                    );
-                }
+                            threadLocal.get().forEach(
+                                    s -> {
+                                        list.add(s);
+                                        out.println(
+                                                STR."\{Thread.currentThread().getName()} :: add/write : \{s}"
+                                        );
+                                        counter.getAndIncrement();
+                                    }
+                            );
+                        }
+                )
         ).get();
 
         executorService.submit(
-                () -> {
-                    list.forEach(
-                            s ->
-                                    out.println(
-                                            STR."\{Thread.currentThread().getName()} :: read : \{s}"
-                                    )
-                    );
-                    counter.getAndIncrement();
-                }
+                Executors.callable(
+                        () -> {
+                            list.forEach(
+                                    s ->
+                                            out.println(
+                                                    STR."\{Thread.currentThread().getName()} :: read : \{s}"
+                                            )
+                            );
+                            counter.getAndIncrement();
+                        }
+                )
         ).get();
 
         out.println(counter.get());
