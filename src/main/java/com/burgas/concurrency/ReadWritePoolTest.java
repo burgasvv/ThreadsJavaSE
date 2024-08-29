@@ -20,7 +20,10 @@ public class ReadWritePoolTest {
     private static final ThreadLocal<List<String>> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] ignoredArgs)
-            throws ExecutionException, InterruptedException, IOException, AttachNotSupportedException {
+
+            throws ExecutionException, InterruptedException,
+            IOException, AttachNotSupportedException
+    {
 
         executorService.submit(
                 Executors.callable(
@@ -58,7 +61,9 @@ public class ReadWritePoolTest {
                 )
         ).get();
 
-        out.println(counter.get());
+        out.println(
+                counter.get()
+        );
         out.println(list);
         executorService.shutdown();
     }
