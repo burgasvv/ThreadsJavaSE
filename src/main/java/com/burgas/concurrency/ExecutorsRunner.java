@@ -75,7 +75,8 @@ public class ExecutorsRunner {
                             out.println(
                                     currentThread()
                                             .getName().toUpperCase() +
-                                    ": Cached thread pool submitted new Message");
+                                    ": Cached thread pool submitted new Message"
+                            );
 
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);

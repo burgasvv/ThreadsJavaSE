@@ -3,6 +3,9 @@ package com.burgas.concurrency;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
 
+import static java.lang.System.*;
+import static java.lang.Thread.*;
+
 public class JsonRecursiveAction extends RecursiveAction {
 
     private final int value;
@@ -15,19 +18,17 @@ public class JsonRecursiveAction extends RecursiveAction {
     protected void compute() {
 
         if (value <= 4) {
-            //noinspection StringTemplateMigration
-            System.out.println(
-                    Thread.currentThread().getName() + " before: " + value
+            out.println(
+                    STR."\{currentThread().getName()} before: \{value}"
             );
             try {
-                Thread.sleep(2000);
+                sleep(2000);
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            //noinspection StringTemplateMigration
-            System.out.println(
-                    Thread.currentThread().getName() + " after: " + value
+            out.println(
+                    STR."\{currentThread().getName()} after: \{value}"
             );
 
         } else {
